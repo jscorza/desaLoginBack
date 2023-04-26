@@ -1,18 +1,7 @@
 import { randomUUID } from 'crypto';
 import fs from 'fs/promises'
-import mongoose from 'mongoose';
+import { productsModel } from '../models/products.model.js  ';
 
-const productSchema = new mongoose.Schema({
-    id:{type: String,required : true },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  code: { type: String, required: true },
-  price: { type: Number, required: true },
-  stock: { type: Number, required: true },
-  category: { type: String, required: true },
-  thumbnail: { type: String, required: false},
-  status: { type: Boolean, required: false},
-}, { versionKey: false });
 
 
 export class ProductsManager {
@@ -21,7 +10,7 @@ export class ProductsManager {
     #path
 
     constructor(path) {
-        this.#productsDb = mongoose.model('products',productSchema)
+        this.#productsDb = productsModel
         this.#path = path
         this.#products = []
     }

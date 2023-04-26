@@ -2,12 +2,9 @@ import fs from 'fs/promises'
 import mongoose from 'mongoose';
 import { ProductsManager } from './products.manager.js';
 import { path } from '../config/servidor.config.js';
+import { cartModel } from '../models/cart.model.js';
 
-const cartSchema = new mongoose.Schema({
-  id:{type: String,required : true },
-  products:{type:Array,required:false}
 
-}, { versionKey: false });
 
 const productsManager = new ProductsManager(path)
 
@@ -21,7 +18,7 @@ export class CartsManager {
     constructor(path) {
         this.#path = path
         this.#carts = []
-        this.#cartsDb = mongoose.model('carts',cartSchema)
+        this.#cartsDb = cartModel
     }
 
     async #leer() {

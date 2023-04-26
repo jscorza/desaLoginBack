@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { CartsManager } from '../managers/carts.manager.js';
 import { pathc } from '../config/servidor.config.js';
-import { cartProductPost } from '../controllers/cartProduct.post.controller.js';
-import { cartProductDelete } from '../controllers/cartProduct.delete.controller.js';
-import { cartProductsPut } from '../controllers/cartNewProducts.Put.controller.js';
-import { cartProductsPutQuantity } from '../controllers/cartProducts.PutQuantity.controller.js';
-import { cartProductDeleteAll } from '../controllers/cartProductAll.delete.controller.js';
+import { cartProductPost } from '../controllers/api/cartProduct.post.controller.js';
+import { cartProductDelete } from '../controllers/api/cartProduct.delete.controller.js';
+import { cartProductsPut } from '../controllers/api/cartNewProducts.Put.controller.js';
+import { cartProductsPutQuantity } from '../controllers/api/cartProducts.PutQuantity.controller.js';
+import { cartProductDeleteAll } from '../controllers/api/cartProductAll.delete.controller.js';
 
 export const routerCarts = Router();
 export const manager = new CartsManager(pathc)

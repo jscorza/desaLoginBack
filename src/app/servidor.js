@@ -5,10 +5,15 @@ import { routerApi } from '../routers/api.router.js'
 import { routerVistas } from '../routers/views.router.js'
 import { conectar } from '../database/mongoose.js'
 import { Server } from 'socket.io'
+import session from '../middlewares/session.js'
 
 await conectar()
 
 const app = express()
+app.use(express.static('./public'))
+app.use(express.json())
+app.use(session)
+
 const server = app.listen(PORT, () => {
     console.log(`servidor escuchando en puerto ${PORT}`)
 })
@@ -28,8 +33,7 @@ app.engine('handlebars', engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
 
-app.use(express.static('./public'))
-app.use(express.json())
+
 
 app.use('/api', routerApi)
 app.use('/', routerVistas)
